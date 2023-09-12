@@ -5,16 +5,20 @@ import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -95,21 +99,9 @@ class MainActivity : ComponentActivity() {
 
                             Spacer(modifier = Modifier.height(20.dp))
 
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                //アイコン追加(もともと備わっているアイコンを使用)
-                                Icon(imageVector = Icons.Default.Email,
-                                    contentDescription = "email",
-                                )
+                            //email
+                            Label(icon = Icons.Default.Email, text = "Email")
 
-                                //横にスペースが欲しいためwidhを指定
-                                Spacer(modifier = Modifier.width(10.dp))
-
-                                Text(
-                                    text = "Email",
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.Bold,
-                                )
-                            }
 
                             Spacer(modifier = Modifier.height(10.dp))
 
@@ -142,6 +134,33 @@ class MainActivity : ComponentActivity() {
                                     color = Color.White,
                                 )
                             }
+
+                            Spacer(modifier = Modifier.height(20.dp))
+
+                            //趣味と居住地
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(10.dp))
+                                    //copyで透明度指定
+                                    .background(Color.LightGray.copy(alpha = 0.6f))
+                                    .padding(horizontal = 10.dp, vertical = 20.dp)
+                            ) {
+                                Label(
+                                    icon = Icons.Default.Favorite,
+                                    text = "趣味：ランニング,ピアノ",
+                                    color = Color.Gray,
+                                )
+
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                Label(
+                                    icon = Icons.Default.LocationOn,
+                                    text = "居住地：日本山形県",
+                                    color = Color.Gray
+                                    )
+                            }
+
                         }
 
                     }
@@ -149,5 +168,29 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+}
+
+
+//jetpackcomposeの関数定義
+//onBackgroundにはテーマの方で設定されている値が入る
+@Composable
+fun Label(icon: ImageVector, text: String, color: Color = MaterialTheme.colors.onBackground) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        //アイコン追加(もともと備わっているアイコンを使用)
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+        )
+
+        //横にスペースが欲しいためwidhを指定
+        Spacer(modifier = Modifier.width(10.dp))
+
+        Text(
+            text = text,
+            color = color,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+        )
     }
 }
