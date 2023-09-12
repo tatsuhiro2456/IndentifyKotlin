@@ -6,9 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -91,6 +91,41 @@ class MainActivity : ComponentActivity() {
                                 color = Color.Gray,
                                 fontSize = 16.sp,
                                 )
+
+                            Spacer(modifier = Modifier.height(20.dp))
+
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                //アイコン追加(もともと備わっているアイコンを使用)
+                                Icon(imageVector = Icons.Default.Email,
+                                    contentDescription = "email",
+                                )
+
+                                //横にスペースが欲しいためwidhを指定
+                                Spacer(modifier = Modifier.width(10.dp))
+
+                                Text(
+                                    text = "Email",
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            Text(
+                                text = "tatsuhiro2456@gmail.com",
+                                fontSize = 16.sp,
+                                )
+
+                            Spacer(modifier = Modifier.height(5.dp))
+
+                            //線の描画
+                            Divider(
+                                //線の角を完全に丸くする
+                                modifier = Modifier.clip(RoundedCornerShape(1000.dp)),
+                                //線の太さ指定
+                                thickness = 2.dp
+                            )
 
                             }
 
