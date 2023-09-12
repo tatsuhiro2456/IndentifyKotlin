@@ -68,6 +68,32 @@ class MainActivity : ComponentActivity() {
                             color = Color.Gray,
                             fontSize = 16.sp,
                         )
+
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        Column(
+                            //startで左寄せ
+                            horizontalAlignment = Alignment.Start,
+                            //fillmMaxWidthで幅をいっぱいにする
+                            modifier = Modifier.fillMaxWidth(),
+                            ) {
+                            //会社名
+                            Text(
+                                text = "大学院",
+                                fontSize = 26.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            Text(
+                                text = "修士2年",
+                                color = Color.Gray,
+                                fontSize = 16.sp,
+                                )
+
+                            }
+
                     }
 
                 }
