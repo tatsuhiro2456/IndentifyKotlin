@@ -1,6 +1,7 @@
 package com.example.jetprofile
 
 import android.os.Bundle
+import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -127,7 +128,21 @@ class MainActivity : ComponentActivity() {
                                 thickness = 2.dp
                             )
 
+                            Spacer(modifier = Modifier.height(20.dp))
+
+                            //詳細ボタン
+                            Button(
+                                modifier = Modifier.fillMaxWidth(),
+                                //初期のボタンの背景色を変更
+                                colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFF85F6A)),
+                                onClick = {/*TODO*/},
+                            ){
+                                Text(
+                                    text = "詳細を表示",
+                                    color = Color.White,
+                                )
                             }
+                        }
 
                     }
 
